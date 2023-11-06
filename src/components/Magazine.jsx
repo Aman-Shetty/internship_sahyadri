@@ -8,9 +8,6 @@ import {
 } from "@material-tailwind/react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { getStorage, ref } from "firebase/storage";
-
-const storage = getStorage();
 
 const querySnapshot = await getDocs(collection(db, "magazine"));
 const data = [];
@@ -26,13 +23,13 @@ const Magazine = () => {
       <h1 className="lg:text-2xl uppercase">MAGAZINE</h1>
       <hr className="w-4 h-1 bg-green-600 mt-2" />
       <div className="flex flex-wrap gap-40">
-        {data.map((item) => (
+        {data.toReversed().map((item) => (
           <div className="mt-16 ">
             <Card className="w-80">
               <CardHeader shadow={false} floated={false} className="h-96">
                 <img
-                  src={ref(storage, `images/{item.name}.jpg`)}
-                  alt="card-image"
+                  src={item.image}
+                  alt={item.name}
                   className="h-full w-full object-cover"
                 />
               </CardHeader>
@@ -47,12 +44,20 @@ const Magazine = () => {
                   </Typography>
                 </div>
               </CardBody>
+
               <CardFooter className="pt-0 mx-auto">
                 <Button
                   ripple={false}
                   className="bg-[#52b871] text-white shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 items-center "
                 >
-                  Read More
+                  <a
+                    href={item.magazine}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="no-underline"
+                  >
+                    Read More
+                  </a>
                 </Button>
               </CardFooter>
             </Card>
