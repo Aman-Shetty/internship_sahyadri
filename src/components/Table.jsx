@@ -59,7 +59,7 @@ const Table = () => {
 
   useEffect(() => {
     // Assuming you have a JSON file named data.json in the public folder
-    fetch("/companyData.json")
+    fetch("/assets/companyData.json")
       .then((response) => response.json())
       .then((data) => setData(data.placementCompaniesData))
       .catch((error) => console.error("Error fetching data:", error));
