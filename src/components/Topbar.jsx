@@ -25,6 +25,12 @@ const Topbar = () => {
           >
             NIRF Info
           </a>
+          <Link
+            to="/dashboard"
+            className="text-white decoration-0 hover:text-lime-400 p-1 px-3"
+          >
+            Dashboard
+          </Link>
         </div>
         <div className="flex">
           <a
@@ -56,7 +62,6 @@ const Topbar = () => {
             to="/admissionenquiry"
             className="text-white decoration-0 hover:text-lime-400 p-1 px-3"
           >
-            {" "}
             <strong className="animate-pulse">ADMISSION OPEN</strong>
           </Link>
         </div>

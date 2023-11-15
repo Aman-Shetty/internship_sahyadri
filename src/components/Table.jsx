@@ -56,6 +56,7 @@ const Table = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(25); // Change to 25 for 25 rows per page
   const [searchQuery, setSearchQuery] = useState("");
+  const [filter, setFilter] = useState("2022-2023");
 
   useEffect(() => {
     // Assuming you have a JSON file named data.json in the public folder
@@ -127,7 +128,10 @@ const Table = () => {
             </div>
           </div>
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <Tabs value="all" className="w-full md:w-max">
+            <Tabs
+              value="2022-2023"
+              className="w-full md:w-max text-blue-900 font-semibold text-xl"
+            >
               <TabsHeader>
                 {TABS.map(({ label, value }) => (
                   <Tab key={value} value={value}>
@@ -223,7 +227,7 @@ const Table = () => {
         <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
           <Typography variant="small" color="blue-gray" className="font-normal">
             Page <span>{currentPage}</span> of{" "}
-            <span>{data.length / itemsPerPage}</span>
+            <span>{Math.floor(data.length / itemsPerPage) + 1}</span>
           </Typography>
           <div className="flex gap-2">
             <Button

@@ -21,8 +21,8 @@ const Magazine = () => {
   return (
     <section className="px-40 py-16 bg-[#ffffff]">
       <h1 className="lg:text-2xl uppercase">MAGAZINE</h1>
-      <hr className="w-4 h-1 bg-green-600 mt-2" />
-      <div className="flex flex-wrap gap-40">
+      <hr className="w-16 h-1 bg-green-600 mt-2" />
+      <div className="flex flex-wrap gap-24">
         {data.toReversed().map((item) => (
           <div className="mt-16 ">
             <Card className="w-80">
